@@ -1,4 +1,4 @@
-package aula01;
+package teste;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+
+import model.Pais;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PaisTeste {
