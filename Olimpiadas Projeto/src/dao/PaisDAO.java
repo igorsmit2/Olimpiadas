@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Pais;
 
@@ -85,5 +87,31 @@ public class PaisDAO {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}
+		public List<Pais> listar() {
+			List <Pais> pais = new ArrayList <>();
+			String sql = "SELECT * FROM pais";
+			try (Connection conn = ConnectionFactory.obtemConexao();
+					PreparedStatement ps = conn.prepareStatement(sql);
+					ResultSet rs = ps.executeQuery()){
+					while (rs.next()) {
+						int    id   	= rs.getInt("idpais");
+						String nome 	= rs.getString("nome");
+						int populacao 	= rs.getInt("populacao");
+						int area 		= rs.getInt("area");
+						Pais p = new Pais();
+						p.setId(id);
+						p.setNome(nome);
+					    p.setPopulacao(populacao);
+						p.setArea(area);
+						pais.add(p);
+					}
+				
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return pais;
 		}
 }

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -28,19 +30,34 @@
             </div>
         </div>
     	</nav>
-		<br><br><br><br>
+		<br><br>
 		<div class="container">
-			<div class="row">
-				<div class="col-md-4">
+			<h1 class="page-header">Cadastro de Pais</h1>
+			<form action="ManterOlimpiada.do" method="post">
+				<div class="row">
+					<div class="form-group col-md-12">
+							<label><strong>Pais</strong></label>
+							<input type="text" class="form-control" name="pais" placeholder="Digite o nome do Pais">
+					</div>
 				</div>
-				<div class="col-md-4 text-center">
-					<form action="ManterOlimpiada.do" method="post">
-						<h2>Pesquisar Olimpiada</h2>
-						<br>
-						<button type="submit" class="btn btn-primary" name="acao" value="pesquisarOlimpiada">Pesquisar</button>
-					</form>
+				<div class="row">
+					<div class="form-group col-md-6">
+							<label><strong>Populacao</strong></label>
+							<input type="text" class="form-control" name="populacao" placeholder="Digite a População">
+					</div>
+					<div class="form-group col-md-6">
+							<label><strong>Area</strong></label>
+							<input type="text" class="form-control" name="area" placeholder="Digite a Area do País">
+					</div>
 				</div>
-			</div>
+				<hr />
+				<div class="row text-right">
+	                	<div class="col-md-12">
+	                    	<button type="submit" class="btn btn-primary" name="acao" value="criarPais">Criar</button>	
+	                    		<a href="index.html" class="btn btn-default">Cancelar</a>
+	               		</div>
+	           	</div>
+	           	</form>
 		</div>
 		
 		<script src="js/jquery.min.js"></script>

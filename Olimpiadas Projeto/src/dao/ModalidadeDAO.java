@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Modalidade;
 import model.Olimpiada;
@@ -76,5 +78,29 @@ public class ModalidadeDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public List<Modalidade> listarModalidade() {
+		List <Modalidade> modalidade = new ArrayList <>();
+		String sql = "SELECT * FROM modalidade";
+		try (Connection conn = ConnectionFactory.obtemConexao();
+				PreparedStatement ps = conn.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery()){
+				while (rs.next()) {
+					int    id   	= rs.getInt("idmodalidade");
+					String nome 	= rs.getString("nome");
+					String tipo = rs.getString("tipo");
+
+					Modalidade mode = new Modalidade();
+					mode.setId(id);
+					mode.setNome(nome);
+					modalidade.add(mode);
+
+				}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return modalidade;
 	}
 }

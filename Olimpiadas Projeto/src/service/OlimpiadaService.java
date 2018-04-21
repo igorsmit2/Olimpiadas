@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import dao.OlimpiadaDAO;
 import model.Modalidade;
 import model.Olimpiada;
@@ -21,5 +23,8 @@ public class OlimpiadaService {
 	}
 	public void atualizar(Pais pais, Modalidade modalidade, Olimpiada olimpiada) {
 		dao.atualizar(pais, modalidade, olimpiada);
+	}
+	public List<Olimpiada> listar(){
+		return dao.listar();
 	}
 }

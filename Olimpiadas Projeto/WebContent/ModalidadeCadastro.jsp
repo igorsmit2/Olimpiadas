@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -28,19 +30,29 @@
             </div>
         </div>
     	</nav>
-		<br><br><br><br>
+		<br><br>
 		<div class="container">
-			<div class="row">
-				<div class="col-md-4">
+			<h1 class="page-header">Cadastro de Modalidade</h1>
+			<form action="ManterOlimpiada.do" method="post">
+				<div class="row">
+					<div class="form-group col-md-12">
+							<label for="modalidade"><strong>Nome da Modalidade</strong></label>
+							<input type="text" class="form-control" name="modalidade" placeholder="Digite o nome da Modalidade">
+					</div>
 				</div>
-				<div class="col-md-4 text-center">
-					<form action="ManterOlimpiada.do" method="post">
-						<h2>Pesquisar Olimpiada</h2>
-						<br>
-						<button type="submit" class="btn btn-primary" name="acao" value="pesquisarOlimpiada">Pesquisar</button>
-					</form>
+				<div class="row">
+					<div class="form-group col-md-12">
+							<label for="modalidade"><strong>Tipo</strong></label>
+							<input type="text" class="form-control" name="tipo" placeholder="Digite se é Verão(V) ou Inverno (I)">
+					</div>
 				</div>
-			</div>
+				<hr />
+				<div class="row text-right">
+	                	<div class="col-md-12">
+	                    	<button type="submit" class="btn btn-primary" name="acao" value="criarModalidade">Criar</button>	
+	                    		<a href="index.html" class="btn btn-default">Cancelar</a>
+	               		</div>
+	           	</div>
 		</div>
 		
 		<script src="js/jquery.min.js"></script>

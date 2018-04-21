@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page import="model.Pais" %>
+<%@ page import="model.Modalidade" %>
+<%@ page import="model.Olimpiada" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -20,7 +26,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="PaisCadastro.jsp">PaÃ­ses</a>
+                    <li><a href="PaisCadastro.jsp">Países</a>
                     </li>
                     <li><a href="ModalidadeCadastro.jsp">Modalidades</a>
                     </li>
@@ -28,19 +34,30 @@
             </div>
         </div>
     	</nav>
+    	<% Pais pais = (Pais)request.getAttribute("pais"); %>
+    	<% Modalidade modalidade = (Modalidade)request.getAttribute("modalidade"); %>
+    	<% Olimpiada olimpiada = (Olimpiada)request.getAttribute("olimpiada");%>
 		<br><br><br><br>
 		<div class="container">
+			
+			<h2 class="page-header"><%=pais.getNome() %>, <%=modalidade.getNome() %>, <%=olimpiada.getAno() %></h2>
+			
 			<div class="row">
 				<div class="col-md-4">
+					<h3>Ouro</h3>
+					<p><%= modalidade.getOuro() %>
 				</div>
-				<div class="col-md-4 text-center">
-					<form action="ManterOlimpiada.do" method="post">
-						<h2>Pesquisar Olimpiada</h2>
-						<br>
-						<button type="submit" class="btn btn-primary" name="acao" value="pesquisarOlimpiada">Pesquisar</button>
-					</form>
+				<div class="col-md-4">
+					<h3>Prata</h3>
+					<p><%= modalidade.getPrata() %>
 				</div>
-			</div>
+				<div class="col-md-4">
+					<h3>Bronze</h3>
+					<p><%= modalidade.getBronze() %>
+				</div>
+			<hr>
+			
+	
 		</div>
 		
 		<script src="js/jquery.min.js"></script>
