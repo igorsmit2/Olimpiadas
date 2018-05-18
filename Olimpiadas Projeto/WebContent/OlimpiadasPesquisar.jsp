@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="model.Pais" %>
-<%@ page import="model.Modalidade" %>
-<%@ page import="model.Olimpiada" %>
-<%@ page import="java.util.List" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="x" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -37,55 +34,47 @@
 		<br><br><br><br>
 		<div class="container">
 			<form action="ManterOlimpiada.do" method="post">
-			<h2 class="page-header">Pesquisar Medalhas</h2>
-			
-			<div class="row">
-				<div class="col-md-4">
-					<select type="text" name="pais" class="form-control">
-				    	<option>- Selecione uma opção -</option>
-				       	<%
-				       	List<Pais> pais = (List<Pais>)request.getAttribute("pais");
-				       	for(Pais p : pais){
-				       	%>
-				       	<option value="<%=p.getId()%>"><%=p.getNome()%></option>
-				       	<%}
-				       	%>    	
-    				</select>
-				</div>
-				<div class="col-md-4">
-					<select type="text" name="modalidade" class="form-control">
-				    	<option>- Selecione uma opção -</option>
-				       	<%
-				       	
-				       	List<Modalidade> modalidade = (List<Modalidade>)request.getAttribute("modalidade"); 
-				       	for(Modalidade m : modalidade){
-				       	%>
-				       	<option value="<%=m.getId()%>"><%=m.getNome()%></option>
-				       	<%}
-				       	%>    	
-    				</select>
-				</div>
-				<div class="col-md-4">
-					<select type="text" name="ano" class="form-control">
-				    	<option>- Selecione uma opção -</option>
-				       	<%
-						List<Olimpiada> olimpiada = (List<Olimpiada>)request.getAttribute("olimpiada");
-				       	for(Olimpiada o : olimpiada){
-				       	%>
-				       	<option value="<%=o.getAno()%>"><%=o.getAno()%></option>
-				       	<%}
-				       	%>    	
-    				</select>
-				</div>
-				
-			</div>
-			<hr>
-			<div class="row">
-				<div class="col-md-9"></div>
-				<div class="col-md-3 text-right">
-					<button type="submit" class="btn btn-primary" name="acao" value="carregarMedalhas">Pesquisar</button>
-				</div>
-			</div>
+                <h2 class="page-header">Pesquisar Medalhas</h2>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <select type="text" name="pais" class="form-control">
+                        	
+                        	<option>- Selecione uma opção -</option>
+                        
+                        	<x:forEach var="paises" items="${pais}">
+								<option value="${paises.id}">${paises.nome}</option>
+							</x:forEach>	
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <select type="text" name="modalidade" class="form-control">
+                            
+                            <option>- Selecione uma opção -</option>
+                            
+                            <x:forEach var="modalidades" items="${modalidade}">
+								<option value="${modalidades.id}">${modalidades.nome}</option>
+							</x:forEach>
+                             	
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <select type="text" name="ano" class="form-control">
+                            <option>- Selecione uma opção -</option>
+                            <x:forEach var="anos" items="${olimpiada}">
+								<option value="${anos.ano}">${anos.ano}</option>
+							</x:forEach>  	
+                        </select>
+                    </div>
+
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-9"></div>
+                    <div class="col-md-3 text-right">
+                        <button type="submit" class="btn btn-primary" name="acao" value="carregarMedalhas">Pesquisar</button>
+                    </div>
+                </div>
 			</form>
 		</div>
 		

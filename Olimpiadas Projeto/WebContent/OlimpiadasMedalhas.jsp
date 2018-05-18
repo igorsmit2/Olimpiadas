@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="model.Pais" %>
-<%@ page import="model.Modalidade" %>
-<%@ page import="model.Olimpiada" %>
-<%@ page import="java.util.List" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -34,26 +31,24 @@
             </div>
         </div>
     	</nav>
-    	<% Pais pais = (Pais)request.getAttribute("pais"); %>
-    	<% Modalidade modalidade = (Modalidade)request.getAttribute("modalidade"); %>
-    	<% Olimpiada olimpiada = (Olimpiada)request.getAttribute("olimpiada");%>
+    	
 		<br><br><br><br>
 		<div class="container">
 			
-			<h2 class="page-header"><%=pais.getNome() %>, <%=modalidade.getNome() %>, <%=olimpiada.getAno() %></h2>
+			<h2 class="page-header">${pais.nome }, ${modalidade.nome}, ${olimpiada.ano}</h2>
 			
 			<div class="row">
 				<div class="col-md-4">
 					<h3>Ouro</h3>
-					<p><%= modalidade.getOuro() %>
+					<p>${modalidade.ouro}</p>
 				</div>
 				<div class="col-md-4">
 					<h3>Prata</h3>
-					<p><%= modalidade.getPrata() %>
+					<p>${modalidade.prata}</p>
 				</div>
 				<div class="col-md-4">
 					<h3>Bronze</h3>
-					<p><%= modalidade.getBronze() %>
+					<p>${modalidade.bronze}</p>
 				</div>
 			<hr>
 			
