@@ -56,6 +56,27 @@ public class ModalidadeDAO {
 		return modalidade;
 	}
 	
+	public Modalidade carregarNome(Modalidade modalidade) {
+		String sqlSelect = "SELECT idmodalidade FROM modalidade WHERE nome = ?";
+		try (Connection conn = ConnectionFactory.obtemConexao();
+				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+			stm.setString(1, modalidade.getNome());
+			try (ResultSet rs = stm.executeQuery();) {
+				if (rs.next()) {
+					modalidade.setId(rs.getInt("idmodalidade"));
+				} else {
+					modalidade.setId(-1);
+					modalidade.setNome(null);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (SQLException e1) {
+			System.out.print(e1.getStackTrace());
+		}
+		return modalidade;
+	}
+	
 	public void excluir(int id) {
 		String sqlDelete = "DELETE FROM modalidade WHERE idmodalidade = ?";
 		try (Connection conn = ConnectionFactory.obtemConexao();

@@ -17,6 +17,9 @@ public class ModalidadeService {
 	public Modalidade carregar(Modalidade modalidade) {
 		return dao.carregar(modalidade);
 	}
+	public Modalidade carregarNome(Modalidade modalidade) {
+		return dao.carregarNome(modalidade);
+	}
 	public void atualizar(Modalidade modalidade, Olimpiada olimpiada) {
 		dao.atualizar(modalidade, olimpiada);
 	}

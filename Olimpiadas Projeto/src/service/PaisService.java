@@ -16,6 +16,9 @@ public class PaisService {
 	public Pais carregar(Pais pais) {
 		return dao.carregar(pais);
 	}
+	public Pais carregarNome(Pais pais) {
+		return dao.carregarNome(pais);
+	}
 	public void excluir(int id) {
 		dao.excluir(id);
 	}

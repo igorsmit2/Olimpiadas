@@ -1,12 +1,11 @@
 package dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.mysql.jdbc.Connection;
 
 import model.Modalidade;
 import model.Olimpiada;
@@ -15,7 +14,7 @@ import model.Pais;
 public class OlimpiadaDAO {
 	public void criar(Pais pais, Olimpiada olimpiada, Modalidade modalidade) {
 		String sqlInsert = "INSERT INTO olimpiada(ouro, prata, bronze, pais_idpais, modalidade_idmodalidade, ano_idano) VALUES (?, ?, ?, ?, ?, ?)";
-		try (Connection conn = (Connection) ConnectionFactory.obtemConexao();
+		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
 			stm.setInt(1, modalidade.getOuro());
 			stm.setInt(2, modalidade.getPrata());

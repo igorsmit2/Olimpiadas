@@ -73,6 +73,31 @@ public class PaisDAO {
 			
 			return pais;
 		}
+		public Pais carregarNome(Pais pais) {
+			String sqlSelect = "SELECT idpais, populacao, area FROM pais WHERE nome = ?";
+			try (Connection conn = ConnectionFactory.obtemConexao();
+					PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+				stm.setString(1, pais.getNome());
+				try (ResultSet rs = stm.executeQuery();) {
+					if (rs.next()) {
+						pais.setId(rs.getInt("idpais"));
+						pais.setPopulacao(rs.getInt("populacao"));
+						pais.setArea(rs.getDouble("area"));
+					} else {
+						pais.setId(-1);
+						pais.setNome(null);
+						pais.setPopulacao(-1);
+						pais.setArea(-1);
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			} catch (SQLException e1) {
+				System.out.print(e1.getStackTrace());
+			}
+			
+			return pais;
+		}
 		
 		// UPDATE
 		public void atualizar(Pais pais) {
