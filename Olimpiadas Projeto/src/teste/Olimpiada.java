@@ -1,4 +1,4 @@
-package aula01;
+package teste;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
