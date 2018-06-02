@@ -30,7 +30,7 @@ public class CadastrarModalidade implements Command{
 		modalidade.setNome(pNome);
 		olimpiada.setTipo(pTipo);
 		
-		modalidade = ms.criar(modalidade, olimpiada);
+		
 			
 		HttpSession session = request.getSession();
 		RequestDispatcher view = null;
