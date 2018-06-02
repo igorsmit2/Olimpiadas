@@ -33,7 +33,7 @@
 		<br><br>
 		<div class="container">
 			<h1 class="page-header">Cadastro de Pais</h1>
-			<form action="ManterOlimpiada.do" method="post">
+			<form action="controller.do" method="post">
 				<div class="row">
 					<div class="form-group col-md-12">
 							<label><strong>Pais</strong></label>
@@ -53,7 +53,7 @@
 				<hr />
 				<div class="row text-right">
 	                	<div class="col-md-12">
-	                    	<button type="submit" class="btn btn-primary" name="acao" value="criarPais">Criar</button>	
+	                    	<button type="submit" class="btn btn-primary" name="command" value="CadastrarPais">Criar</button>	
 	                    		<a href="index.html" class="btn btn-default">Cancelar</a>
 	               		</div>
 	           	</div>

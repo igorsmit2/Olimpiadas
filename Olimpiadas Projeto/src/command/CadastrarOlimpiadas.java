@@ -16,7 +16,7 @@ import service.ModalidadeService;
 import service.OlimpiadaService;
 import service.PaisService;
 
-public class PaginaPesquisarOlimpiada implements Command {
+public class CadastrarOlimpiadas implements Command{
 	
 	@Override
 	public void executar(HttpServletRequest request,
@@ -25,9 +25,28 @@ public class PaginaPesquisarOlimpiada implements Command {
 		ModalidadeService ms = new ModalidadeService();
 		OlimpiadaService os = new OlimpiadaService();
 		
-		List<Pais> pais = ps.listar();
-		List<Modalidade> modalidade = ms.listar();
-		List<Olimpiada> olimpiada = os.listar();
+		String pPais = request.getParameter("pais");
+		int pOuro = Integer.parseInt(request.getParameter("ouro"));
+		int pPrata = Integer.parseInt(request.getParameter("prata"));
+		int pBronze = Integer.parseInt(request.getParameter("bronze"));
+		String pModalidade = request.getParameter("modalidade");
+		int ano	=	Integer.parseInt(request.getParameter("ano"));
+		
+		Olimpiada olimpiada = new Olimpiada();
+		Modalidade modalidade = new Modalidade();
+		Pais pais = new Pais();
+		
+		olimpiada.setAno(ano);
+		modalidade.setNome(pModalidade);
+		modalidade.setOuro(pOuro);
+		modalidade.setPrata(pPrata);
+		modalidade.setBronze(pBronze);
+		pais.setNome(pPais);
+		
+		pais = ps.carregarNome(pais);
+		modalidade = ms.carregarNome(modalidade);
+		
+		os.criar(pais, olimpiada, modalidade);
 		
 		HttpSession session = request.getSession();
 		RequestDispatcher view = null;
@@ -36,7 +55,7 @@ public class PaginaPesquisarOlimpiada implements Command {
 		session.setAttribute("modalidade", modalidade);
 		session.setAttribute("olimpiada", olimpiada);
 		
-		view = request.getRequestDispatcher("OlimpiadasPesquisar.jsp");
+		view = request.getRequestDispatcher("index.html");
 		
 		view.forward(request, response);
 	}

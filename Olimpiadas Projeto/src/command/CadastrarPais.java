@@ -1,7 +1,6 @@
 package command;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,27 +15,34 @@ import service.ModalidadeService;
 import service.OlimpiadaService;
 import service.PaisService;
 
-public class PaginaPesquisarOlimpiada implements Command {
+public class CadastrarPais implements Command{
 	
 	@Override
 	public void executar(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		
 		PaisService ps = new PaisService();
-		ModalidadeService ms = new ModalidadeService();
-		OlimpiadaService os = new OlimpiadaService();
+
+		Pais pais = new Pais();
 		
-		List<Pais> pais = ps.listar();
-		List<Modalidade> modalidade = ms.listar();
-		List<Olimpiada> olimpiada = os.listar();
+		String pNome = request.getParameter("pais");
+		int pPopulacao = Integer.parseInt(request.getParameter("populacao"));
+		double pArea= Double.parseDouble(request.getParameter("area"));
 		
+		pais.setNome(pNome);
+		pais.setPopulacao(pPopulacao);
+		pais.setArea(pArea);
+		
+		ps.criar(pais);
+		
+		pais = ps.carregar(pais);
+			
 		HttpSession session = request.getSession();
 		RequestDispatcher view = null;
 		
 		session.setAttribute("pais", pais);
-		session.setAttribute("modalidade", modalidade);
-		session.setAttribute("olimpiada", olimpiada);
 		
-		view = request.getRequestDispatcher("OlimpiadasPesquisar.jsp");
+		view = request.getRequestDispatcher("Pais.jsp");
 		
 		view.forward(request, response);
 	}

@@ -22,11 +22,11 @@
                             Deseja realmente excluir esta Olimpiada?
                         </div>
                         <div class="modal-footer">
-                            <form action="ManterOlimpiada.do" method="post">
+                            <form action="controller.do" method="post">
                                 <input type="hidden" name="ano" value="${olimpiada.ano }" />
                                 <input type="hidden" name="modalidade" value="${modalidade.id }" />
                                 <input type="hidden" name="pais" value="${pais.id }" />
-                                <button type="submit" class="btn btn-primary" name="acao" value="excluirOlimp">Sim</button>
+                                <button type="submit" class="btn btn-primary" name="command" value="ExcluirOlimpiadas">Sim</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
                             </form>
                         </div>
@@ -55,7 +55,7 @@
     	</nav>
 		<br><br><br><br>
 		<div class="container">
-			<form action="ManterOlimpiada.do" method="post">
+			<form action="controller.do" method="post">
 			<input type="hidden" class="form-group" value="${pais.id }" name="pais">
 			<input type="hidden" class="form-group" value="${modalidade.id }" name="modalidade">
 			<input type="hidden" class="form-group" value="${olimpiada.ano}" name="ano">
@@ -84,7 +84,7 @@
 				<br>
 				<div class="row">
 					<div class="col-md-12 text-right">
-						<button type="submit" class="btn btn-primary" name="acao" value="editarOlimpiadas">Editar</button>
+						<button type="submit" class="btn btn-primary" name="command" value="PaginaEditarOlimpiada">Editar</button>
 				</form>
 						<button type="button" class="btn btn-primary" name="acao" value="excluirOlimpiada" data-toggle="modal" data-target="#delete-modal">Excluir</button>
 					</div>
@@ -106,7 +106,7 @@
 						<input type="hidden" class="form-group" value="${pais.nome }" name="pais">
 						<input type="hidden" class="form-group" value="${modalidade.nome }" name="modalidade">
 						<input type="hidden" class="form-group" value="${olimpiada.ano}" name="ano">
-						<button type="submit" class="btn btn-primary" name="acao" value="cadastrarOlimpiada">Cadastrar</button>
+						<button type="submit" class="btn btn-primary" name="command" value="PaginaCadastrarOlimpiada">Cadastrar</button>
 					</div>
 				
 				

@@ -34,7 +34,7 @@
     	</nav>
 		<br><br><br><br>
 		<div class="container">
-			<form action="ManterOlimpiada.do" method="post">
+			<form action="controller.do" method="post">
 			<h2 class="page-header">Pesquisar Medalhas</h2>
 			
 			<div class="row">
@@ -74,7 +74,7 @@
 			<div class="row">
 				<div class="col-md-9"></div>
 				<div class="col-md-3 text-right">
-					<button type="submit" class="btn btn-primary" name="acao" value="carregarMedalhas">Pesquisar</button>
+					<button type="submit" class="btn btn-primary" name="command" value="CarregarMedalhas">Pesquisar</button>
 				</div>
 			</div>
 			</form>

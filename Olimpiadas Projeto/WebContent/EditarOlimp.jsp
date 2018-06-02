@@ -33,7 +33,7 @@
 		<br><br>
 		<div class="container">
 			<h1 class="page-header">Editar Olimpiada</h1>
-			<form action="ManterOlimpiada.do" method="post">
+			<form action="controller.do" method="post">
 				<div class="row">
 					<div class="form-group col-md-12">
 							<label><strong>Pais</strong></label>
@@ -72,7 +72,7 @@
 	                	<div class="col-md-12">
 	                	<input type="hidden" class="form-group" value="${pais.id }" name="pais">
 						<input type="hidden" class="form-group" value="${modalidade.id }" name="modalidade">
-	                    	<button type="submit" class="btn btn-primary" name="acao" value="editarOlimp">Editar</button>	
+	                    	<button type="submit" class="btn btn-primary" name="command" value="EditarOlimpiadas">Editar</button>	
 	                    		<a href="index.html" class="btn btn-default">Cancelar</a>
 	               		</div>
 	           	</div>
